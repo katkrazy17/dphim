@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateEpisodesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,17 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('episodes', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('slug');
-            $table->string('email')->unique();
-            $table->string('password');
+            $table->integer('film_id')->unsigned();
+            $table->foreign('film_id')
+                ->references('id')
+                ->on('films')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+            $table->string('episode');
+            $table->string('link');
             $table->tinyInteger('status')->default(1);
-            $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -32,6 +35,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('episodes');
     }
 }
