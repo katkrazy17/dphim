@@ -1,0 +1,7 @@
+{
+    "/vendor/js/app.js": "/vendor/js/app.js",
+    "/vendor/js/bootstrap.min.js": "/vendor/js/bootstrap.min.js",
+    "/vendor/css/bootstrap.min.css": "/vendor/css/bootstrap.min.css",
+    "/vendor/js/jquery-3.2.1.slim.min.js": "/vendor/js/jquery-3.2.1.slim.min.js",
+    "/vendor/js/popper.min.js": "/vendor/js/popper.min.js"
+}

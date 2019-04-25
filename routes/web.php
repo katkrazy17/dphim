@@ -11,10 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['prefix' => '', 'namespace' => 'V1'], function () {
+    require(base_path('routes/admin.php'));
 });
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['prefix' => '', 'namespace' => 'V1'], function () {
+    require(base_path('routes/frontend.php'));
+});

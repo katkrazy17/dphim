@@ -1,5 +1,6 @@
-const mix = require('laravel-mix');
-
+let mix = require('laravel-mix');
+const THEME_PATH = 'resources/assets/';
+const FRONTEND_PATH = 'public/vendor/';
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -11,5 +12,15 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-   .sass('resources/sass/app.scss', 'public/css');
+mix.js([
+   THEME_PATH + 'js/app.js',
+], FRONTEND_PATH + 'js')
+   .styles([
+      THEME_PATH + 'css/bootstrap.min.css'
+   ], FRONTEND_PATH + 'css/bootstrap.min.css')
+   .js([
+      THEME_PATH + 'js/bootstrap.min.js'
+   ], FRONTEND_PATH + 'js/bootstrap.min.js')
+
+   .copyDirectory(THEME_PATH + 'js/jquery-3.2.1.slim.min.js', FRONTEND_PATH + 'js')
+   .copyDirectory(THEME_PATH + 'js/popper.min.js', FRONTEND_PATH + 'js')
