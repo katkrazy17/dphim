@@ -8,7 +8,7 @@ use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 
 class Actor extends Model
 {
-    use Sluggable, Notifiable, SluggableScopeHelpers;
+    use Sluggable, SluggableScopeHelpers;
 
     protected $fillable = [
         'first_name',

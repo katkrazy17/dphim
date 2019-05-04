@@ -24,7 +24,7 @@ class GlobalSetting extends Model
     public function sluggable()
     {
         return [
-            'alias' => [
+            'slug' => [
                 'source' => 'company_name'
             ]
         ];
