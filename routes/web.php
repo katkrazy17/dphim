@@ -18,3 +18,13 @@ Route::group(['prefix' => '', 'namespace' => 'V1'], function () {
 Route::group(['prefix' => '', 'namespace' => 'V1'], function () {
     require(base_path('routes/frontend.php'));
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['prefix' => ''], function() {
+   require (base_path('routes/admin.php'));
+});
+Route::get('admin/index', function () {
+   return view('admin.contents.admins.index');
+});
+
