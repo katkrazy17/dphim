@@ -13,10 +13,10 @@ class CreateGlobalSettingTable extends Migration
      */
     public function up()
     {
-        Schema::create('global_setting', function (Blueprint $table) {
+        Schema::create('global_settings', function (Blueprint $table) {
             $table->increments('id');
             $table->string('company_name');
-            $table->string('alias');
+            $table->string('slug');
             $table->string('company_phone')->nullable();
             $table->string('company_email')->nullable();
             $table->string('company_facebook')->nullable();

@@ -16,13 +16,13 @@ class CreateFilmsTable extends Migration
         Schema::create('films', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title')->unique();
-            $table->string('title_eng')->unique();
+            $table->string('title_eng')->unique()->nullable();
             $table->string('slug');
             $table->text('description')->nullable();
             $table->string('avatar');
             $table->text('content');
             $table->dateTime('release_date');
-            $table->tinyInteger('run_time')->nullable();
+            $table->integer('run_time')->nullable();
             $table->string('quality')->nullable();
             $table->string('resolution')->nullable();
             $table->string('language')->nullable();
