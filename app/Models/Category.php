@@ -34,4 +34,9 @@ class Category extends Model
     {
         return $this->belongsToMany('App\Models\Film', 'category_film', 'category_id', 'film_id')->withTimestamps();
     }
+
+    public function childs()
+    {
+        return $this->hasMany('App\Models\Category', 'parent_id', 'id');
+    }
 }

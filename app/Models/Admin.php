@@ -9,7 +9,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Admin extends Model
+class Admin extends Authenticatable
 {
     use Sluggable, Notifiable, SluggableScopeHelpers;
 

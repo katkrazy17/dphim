@@ -1,7 +1,19 @@
 {
     "/vendor/js/app.js": "/vendor/js/app.js",
-    "/vendor/js/bootstrap.min.js": "/vendor/js/bootstrap.min.js",
+    "/vendor/js/bootadmin.js": "/vendor/js/bootadmin.js",
     "/vendor/css/bootstrap.min.css": "/vendor/css/bootstrap.min.css",
+    "/vendor/css/animate.css": "/vendor/css/animate.css",
+    "/vendor/css/style.css": "/vendor/css/style.css",
+    "/vendor/css/fontawesome.min.css": "/vendor/css/fontawesome.min.css",
+    "/vendor/css/loginadmin.css": "/vendor/css/loginadmin.css",
+    "/vendor/css/notfound.css": "/vendor/css/notfound.css",
+    "/vendor/css/tree.css": "/vendor/css/tree.css",
     "/vendor/js/jquery-3.2.1.slim.min.js": "/vendor/js/jquery-3.2.1.slim.min.js",
-    "/vendor/js/popper.min.js": "/vendor/js/popper.min.js"
+    "/vendor/js/popper.min.js": "/vendor/js/popper.min.js",
+    "/vendor/js/bootstrap.min.js": "/vendor/js/bootstrap.min.js",
+    "/vendor/js/inspinia.js": "/vendor/js/inspinia.js",
+    "/vendor/js/jquery.metisMenu.js": "/vendor/js/jquery.metisMenu.js",
+    "/vendor/js/jquery.slimscroll.min.js": "/vendor/js/jquery.slimscroll.min.js",
+    "/vendor/js/pace.min.js": "/vendor/js/pace.min.js",
+    "/vendor/js/jquery-3.1.1.min.js": "/vendor/js/jquery-3.1.1.min.js"
 }
