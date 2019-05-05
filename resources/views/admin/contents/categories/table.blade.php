@@ -26,8 +26,8 @@
                                         <td>{!! date('d/m/Y',strtotime(date($category->created_at))) !!}</td>
                                         <td class="text-center">
                                             @include('admin.modals.categories.delete')
-                                            <a class='btn btn-success btn-xs' href="{!! route('categories.edit', $category->slug) !!}"><span class="glyphicon glyphicon-edit"></span> Edit</a>
-                                            <a href='#Delete-{{$category->slug}}' data-toggle="modal" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Delete</a>
+                                            <a class='btn btn-success btn-xs b-r-xs' href="{!! route('categories.edit', $category->slug) !!}"><i class="far fa-edit"></i> Edit</a>
+                                            <a href='#Delete-{{$category->slug}}' data-toggle="modal" class="btn btn-danger btn-xs b-r-xs"><i class="far fa-trash-alt"></i> Delete</a>
                                         </td>
                                         @if (count($category->childs))
                                             @foreach ($category->childs as $key_child => $child)
@@ -38,8 +38,8 @@
                                                     <td>{!! date('d/m/Y',strtotime(date($child->created_at))) !!}</td>
                                                     <td class="text-center">
                                                         @include('admin.modals.categories.destroy')
-                                                        <a class='btn btn-success btn-xs' href="{!! route('categories.edit', $child->slug) !!}"><span class="glyphicon glyphicon-edit"></span> Edit</a>
-                                                        <a href='#Delete-{{$child->slug}}' data-toggle="modal" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Delete</a>
+                                                        <a class='btn btn-success btn-xs b-r-xs' href="{!! route('categories.edit', $child->slug) !!}"><i class="far fa-edit"></i> Edit</a>
+                                                        <a href='#Delete-{{$child->slug}}' data-toggle="modal" class="btn btn-danger btn-xs b-r-xs"><i class="far fa-trash-alt"></i> Delete</a>
                                                     </td>
                                                 </tr>
                                             @endforeach

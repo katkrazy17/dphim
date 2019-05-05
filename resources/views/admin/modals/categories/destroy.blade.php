@@ -16,9 +16,9 @@
             </div>
             <div class="modal-footer d-flex justify-content-center">
                 {!! Form::open(['method' => 'Delete', 'route' => ['categories.destroy', $child->slug]]) !!}
-                    <button class="btn btn-danger" type="submit">Xóa</button>
+                    <button class="btn btn-danger b-r-xs" type="submit">Xóa</button>
                 {!! Form::close() !!}
-                <button type="button" class="btn btn-outline-dark button botron" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-outline-dark button botron b-r-xs" data-dismiss="modal">Đóng</button>
             </div>
         </div>
     </div>

@@ -10,17 +10,18 @@
                     <span class="m-r-sm text-muted welcome-message">Xin chào, <span class="text-info font-weight-bold">{{ Auth::guard('admin')->user()->first_name ." ". Auth::guard('admin')->user()->last_name }} <b class="caret"></b></span></span>
                 </a>
                 <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                    <li><a class="dropdown-item" href="profile.html">Thay đổi mật khẩu</a></li>
+                    <li><a class="dropdown-item" href="#" data-toggle="modal" data-target="#changePassword">Thay đổi mật khẩu</a></li>
                     <li class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="{{ route('admin.logout') }}">Logout</a></li>
+                    <li><a class="dropdown-item" href="{{ route('admin.logout') }}">Đăng xuất</a></li>
                 </ul>
             </li>
             <li>
                 <a href="{{ route('admin.logout') }}">
-                    <i class="fas fa-sign-out-alt"></i>Log out
+                    <i class="fas fa-sign-out-alt"></i>Đăng xuất
                 </a>
             </li>
         </ul>
         @endif
     </nav>
 </div>
+@include('admin.modals.admins.change_password')

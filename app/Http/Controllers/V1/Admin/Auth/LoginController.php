@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\V1\Admin;
+namespace App\Http\Controllers\V1\Admin\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\V1\Admin\Login\LoginRequest;
+use App\Http\Requests\V1\Admin\Login\ChangePasswordRequest;
 use App\Repositories\Admin\AdminRepositoryInterface;
 
 class LoginController extends Controller

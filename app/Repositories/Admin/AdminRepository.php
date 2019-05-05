@@ -39,7 +39,7 @@ class AdminRepository extends BaseRepository implements AdminRepositoryInterface
         try {
             if (\Auth::check()) {
                 if (\Hash::check($pass_old, \Auth::guard('admin')->user()->password)) {
-                    $admin = \Auth::guard('admin')->user()->alias;
+                    $admin = \Auth::guard('admin')->user()->slug;
                     $adminFind = $this->findBySlugOrFail($admin);
                     $adminFind->update($data);
                     return true;

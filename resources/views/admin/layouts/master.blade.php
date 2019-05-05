@@ -29,6 +29,11 @@
                 @include('admin.includes.footer')
             </div>
         </div>    
+        <div class="scroll-top-wrapper ">
+            <span class="scroll-top-inner">
+                <i class="fa fa-2x fa-arrow-circle-up"></i>
+            </span>
+        </div>
     </div>
     <script src="{{ asset('vendor/js/jquery-3.1.1.min.js') }}"></script>
     <script src="{{ asset('vendor/js/popper.min.js') }}"></script>
@@ -39,6 +44,11 @@
     <script src="{{ asset('vendor/js/bootadmin.js') }}"></script>
     <script src="{{ asset('vendor/js/inspinia.js') }}"></script>
     @yield('javascript')
+    @if ($errors->has('password_old') || $errors->has('password_new') || session('checkPassword'))
+        <script>
+            $('#changePassword').modal('show');
+        </script>
+    @endif
 </body>
 
 </html>

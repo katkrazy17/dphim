@@ -18,7 +18,7 @@
         </div>
         <div class="col-sm-8">
             <div class="title-action">
-                <a href="{{ route('categories.index') }}" class="btn btn-primary">Thêm danh mục chính <i class="fas fa-plus"></i></a>
+                <a href="{{ route('categories.index') }}" class="btn btn-primary b-r-xs">Thêm danh mục chính <i class="fas fa-plus"></i></a>
             </div>
         </div>
     </div>
@@ -43,12 +43,12 @@
                             {!! Form::open(array('url' => 'admin/categories', 'method' => 'POST')) !!}
                             <div class="form-group required">
                                 {!! Form::label('name', 'Tên danh mục', ['class' => 'font-weight-bold']) !!}
-                                {!! Form::text('name', '', ['class' => 'form-control', 'placeholder' => 'Nhập tên danh mục']) !!}
+                                {!! Form::text('name', '', ['class' => $errors->has('name') ? 'form-control error' : 'form-control', 'placeholder' => 'Nhập tên danh mục']) !!}
                                 <span class="text-danger">{{ $errors->first('name') }}</span>
                             </div>
                             <div class="form-group required">
                                 {!! Form::label('parent_id', 'Thuộc danh mục', ['class' => 'font-weight-bold']) !!}
-                                <select name="parent_id" class="form-control">
+                                <select name="parent_id" class="{{ $errors->has('parent_id') ? 'form-control error' : 'form-control' }}">
                                     <option selected="selected" value>-- Chọn danh mục chính --</option>
                                     @foreach ($categories_parent as $categories)
                                         <option value="{{ $categories->id }}">{!! $categories->name !!}</option>
@@ -57,7 +57,7 @@
                                 <span class="text-danger">{{ $errors->first('parent_id') }}</span>
                             </div>
                             <div class="form-group">
-                                {!! Form::submit('Lưu danh mục', ['class' => 'btn btn-dark border-0 shadow']) !!}
+                                {!! Form::submit('Lưu danh mục', ['class' => 'btn btn-dark border-0 shadow b-r-xs']) !!}
                             </div>
                             {!! Form::close() !!}
                     </aside>
