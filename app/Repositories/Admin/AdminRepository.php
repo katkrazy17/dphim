@@ -19,9 +19,8 @@ class AdminRepository extends BaseRepository implements AdminRepositoryInterface
         if (Auth::guard('admin')->attempt($attributes, $remember)) {
             return redirect('admin/categories');
         } else {
-            return redirect()->back()->with('status', 'Tên người dùng và mật khẩu không tồn tại');
+            return redirect()->back()->with('status', 'Tên người dùng và mật khẩu không đúng');
         }
-
     }
 
     public function logout()

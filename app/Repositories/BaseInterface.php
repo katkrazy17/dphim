@@ -38,3 +38,4 @@ interface BaseInterface
 
     public function whereWith(array $relations, $column, $value);
 }
+

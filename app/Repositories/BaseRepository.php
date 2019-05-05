@@ -2,10 +2,13 @@
 
 namespace App\Repositories;
 
+use App\Repositories\RepositoryInterface;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Container\Container as App;
+use Illuminate\Database\Model;
 
-abstract class BaseRepository
+abstract class BaseRepository 
 {
     protected $_model;
 
@@ -31,7 +34,6 @@ abstract class BaseRepository
     {
         return $this->_model->all();
     }
-
 
     public function getIdAdmin()
     {
@@ -74,7 +76,7 @@ abstract class BaseRepository
             $columnOrderBy,
             $valueOrderBy
         )
-            ->paginate($paginate);
+        ->paginate($paginate);
     }
 
     public function pluck($column1, $column2)

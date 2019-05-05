@@ -18,3 +18,4 @@ Route::group(['prefix' => '', 'namespace' => 'V1'], function () {
 Route::group(['prefix' => '', 'namespace' => 'V1'], function () {
     require(base_path('routes/frontend.php'));
 });
+
