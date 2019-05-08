@@ -28,6 +28,8 @@ mix.js([
    .copyDirectory(THEME_PATH + 'css/fontawesome.min.css', FRONTEND_PATH + 'css')
    .copyDirectory(THEME_PATH + 'css/loginadmin.css', FRONTEND_PATH + 'css')
    .copyDirectory(THEME_PATH + 'css/notfound.css', FRONTEND_PATH + 'css')
+   .copyDirectory(THEME_PATH + 'css/fr-home-page.css', FRONTEND_PATH + 'css')
+   .copyDirectory(THEME_PATH + 'css/fr-watch-page.css', FRONTEND_PATH + 'css')
    .copyDirectory(THEME_PATH + 'css/tree.css', FRONTEND_PATH + 'css')
    //js
    .copyDirectory(THEME_PATH + 'js/jquery-3.2.1.slim.min.js', FRONTEND_PATH + 'js')
@@ -40,4 +42,3 @@ mix.js([
    .copyDirectory(THEME_PATH + 'js/jquery-3.1.1.min.js', FRONTEND_PATH + 'js')     
    // image
    .copyDirectory(THEME_PATH + 'images', FRONTEND_PATH + 'css/images')
-   
