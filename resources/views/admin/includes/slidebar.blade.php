@@ -26,6 +26,12 @@
                 <ul class="nav nav-second-level collapse">
                     <li><a href="{{ route('tags.create') }}">Tạo tags mới</a></li>
                     <li><a href="{{ route('tags.index') }}">Danh sách tags</a></li>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-th-list"></i> <span class="nav-label">Quản lý quảng cáo</span><span
+                        class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
+                    <li><a href="{{ route('advertisements.index') }}">Tạo quảng cáo</a></li>
                 </ul>
             </li>
         </ul>

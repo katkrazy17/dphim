@@ -10,4 +10,5 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth
     Route::get('categories/childs', ['uses' => 'CategoryController@childs', 'as' => 'categories.childs']);
     Route::resource('categories', 'CategoryController')->except(['create', 'show']);
     Route::resource('tags', 'TagController')->except(['show']);
+    Route::resource('advertisements','AdvertisementController')->except(['create','show']);
 });
