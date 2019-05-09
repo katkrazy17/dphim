@@ -21,6 +21,13 @@
                     <li><a href="{{ route('categories.childs') }}">Tạo danh mục phụ</a></li>
                 </ul>
             </li>
+            <li>
+                <a href="#"><i class="fas fa-tag"></i> <span class="nav-label">Quản lý tags</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
+                    <li><a href="{{ route('tags.create') }}">Tạo tags mới</a></li>
+                    <li><a href="{{ route('tags.index') }}">Danh sách tags</a></li>
+                </ul>
+            </li>
         </ul>
     </div>
 </nav>

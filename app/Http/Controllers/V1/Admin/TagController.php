@@ -4,23 +4,22 @@ namespace App\Http\Controllers\V1\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\V1\Admin\Category\StoreRequest;
-use App\Http\Requests\V1\Admin\Category\UpdateRequest;
-use App\Repositories\Category\CategoryRepositoryInterface;
+use App\Repositories\Tag\TagRepositoryInterface;
+use App\Http\Requests\V1\Admin\Tag\StoreRequest;
+use App\Http\Requests\V1\Admin\Tag\UpdateRequest;
 use Exception;
 
-class CategoryController extends Controller
+class TagController extends Controller
 {
 
-    protected $categoryRepository;
+    protected $tagRepository;
 
-    public function __construct(
-        CategoryRepositoryInterface $categoryRepository
-    ) {
-        $this->categoryRepository = $categoryRepository;
-        $this->data['categories_all'] = $this->categoryRepository->whereNull('parent_id', 'name');
-        $this->data['categories_parent'] = $this->categoryRepository->whereNull('parent_id', 'name')->where('status', '1');
+    public function __construct(TagRepositoryInterface $tagRepository)
+    {
+        $this->tagRepository = $tagRepository;
+        $this->data['tags_all'] = $this->tagRepository->orderBy('created_at', 'DESC');
     }
+
 
     /**
      * Display a listing of the resource.
@@ -29,12 +28,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('admin.contents.categories.create-index', $this->data);
-    }
-
-    public function childs()
-    {
-        return view('admin.contents.categories.createchild-index', $this->data);
+        return view('admin.contents.tags.index', $this->data);
     }
 
     /**
@@ -44,6 +38,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
+        return view('admin.contents.tags.create', $this->data);
     }
 
     /**
@@ -58,12 +53,12 @@ class CategoryController extends Controller
         try {
             $data = $request->only([
                 'name',
-                'parent_id',
+                'status'
             ]);
-            $this->categoryRepository->create($data);
-            \DB::commit();
-            return redirect()->back()->with('status_s', 'Đã lưu dữ liệu thành công');
-        } catch (\Throwable $th) {
+            $this->tagRepository->create($data);
+            \DB::commit();  
+            return redirect()->route('tags.create')->with('status_s', 'Đã lưu dữ liệu thành công');          
+        } catch (Exception $exception) {
             \DB::rollback();
             return redirect()->back()->with('status_d', 'Không thể thực hiện ! Đã có lỗi xảy ra.');
         }
@@ -89,11 +84,8 @@ class CategoryController extends Controller
     public function edit($slug)
     {
         try {
-            $this->data['categories'] = $this->categoryRepository->findBySlugOrFail($slug);
-            if ($this->data['categories']->parent_id == null) {
-                return view('admin.contents.categories.edit', $this->data);
-            }
-            return view('admin.contents.categories.editchild', $this->data);
+            $this->data['tags'] = $this->tagRepository->findBySlugOrFail($slug);
+            return view('admin.contents.tags.edit', $this->data);
         } catch (Exception $exception) {
             return view('admin.errors.404');
         }
@@ -110,19 +102,17 @@ class CategoryController extends Controller
     {
         \DB::beginTransaction();
         try {
-            $this->categoryRepository->findBySlugOrFail($slug);
             $data = [
                 'name' => $request['name'],
                 'slug' => str_slug($request['name']),
-                'parent_id' => $request['parent_id'],
-                'status' => $this->categoryRepository->checkStatus($request['status']),
+                'status' => $this->tagRepository->checkStatus($request['status']),
             ];
-            $this->categoryRepository->update($data, $slug);
+            $this->tagRepository->update($data, $slug);
             \DB::commit();
-            return redirect()->route('categories.index')->with('status_s', 'Đã cập nhật thành công !');
+            return redirect()->route('tags.index')->with('status_s', 'Đã cập nhật thành công !');
         } catch (Exception $exception) {
             \DB::rollback();
-            return redirect()->back()->with('status_d', 'Không thể cập nhật ! Đã có lỗi xảy ra.');
+            return redirect()->back()->with('status_d', 'Không thể thực hiện ! Đã có lỗi xảy ra.');
         }
     }
 
@@ -136,11 +126,10 @@ class CategoryController extends Controller
     {
         \DB::beginTransaction();
         try {
-            $categories = $this->categoryRepository->findBySlugOrFail($slug);
-            $categories->childs()->delete();
-            $this->categoryRepository->destroy($categories->id);
+            $tag_id = $this->tagRepository->findBySlugOrFail($slug);
+            $this->tagRepository->destroy($tag_id->id);
             \DB::commit();
-            return redirect()->route('categories.index')->with('status_p', 'Đã xóa thành công !');
+            return redirect()->route('tags.index')->with('status_p', 'Đã xóa thành công !');
         } catch (Exception $exception) {
             \DB::rollback();
             return redirect()->back()->with('status_d', 'Không thể xóa. Đã có lỗi xảy ra.');

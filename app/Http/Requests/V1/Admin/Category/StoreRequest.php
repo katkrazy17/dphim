@@ -24,7 +24,7 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:191|unique:categories',
+            'name' => 'required|min:4|max:191|unique:categories',
             'parent_id' => 'required|sometimes|nullable',
         ];
     }
@@ -33,6 +33,7 @@ class StoreRequest extends FormRequest
     {
         return [
             'name.required' => 'Vui lòng nhập tên danh mục !',
+            'name.min' => 'Tên tag quá ngắn ! (tối thiểu 4 ký tự).',
             'name.max' => 'Tên danh mục quá dài ! (tối đa 191 ký tự).',
             'name.unique' => 'Tên danh mục đã tồn tại.',
             'parent_id.required' => 'Bạn chưa chọn danh mục.',

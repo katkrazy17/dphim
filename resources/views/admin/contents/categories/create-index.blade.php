@@ -46,12 +46,12 @@
                                     {!! Form::text('name', '', ['class' => $errors->has('name') ? 'form-control error' : 'form-control', 'placeholder' => 'Nhập tên danh mục']) !!}
                                     <span class="text-danger">{{ $errors->first('name') }}</span>
                                 </div>
+                                <div class="form-group">
+                                    {!! Form::submit('Lưu danh mục', ['class' => 'btn btn-dark border-0 shadow b-r-xs']) !!}
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    {!! Form::submit('Lưu danh mục', ['class' => 'btn btn-dark border-0 shadow b-r-xs']) !!}
                 </div>
             </div>
             {!! Form::close() !!}

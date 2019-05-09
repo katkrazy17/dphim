@@ -26,7 +26,7 @@ class UpdateRequest extends FormRequest
     {
         $category = Category::findBySlugOrFail($this->category);
         return [
-            'name' => 'required|max:191|unique:categories,name,' . $category->id . ',id',
+            'name' => 'required|min:4|max:191|unique:categories,name,' . $category->id . ',id',
             'parent_id' => 'sometimes|nullable|required',
         ];
     }
@@ -35,6 +35,7 @@ class UpdateRequest extends FormRequest
     {
         return [
             'name.required' => 'Vui lòng nhập tên danh mục !',
+            'name.min' => 'Tên tag quá ngắn ! (tối thiểu 4 ký tự).',
             'name.max' => 'Tên danh mục quá dài ! (tối đa 191 ký tự).',
             'name.unique' => 'Tên chuyên mục đã tồn tại.',
             'parent_id.required' => 'Bạn chưa chọn danh mục.',

@@ -55,13 +55,13 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    {!! Form::submit('Lưu thay đổi', ['class' => 'btn btn-dark border-0 shadow b-r-xs']) !!}
+                                    <a href="{{ route('categories.index') }}" class="btn btn-light btn-outline-dark b-r-xs">Hủy</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    {!! Form::submit('Lưu thay đổi', ['class' => 'btn btn-dark border-0 shadow b-r-xs']) !!}
-                    <a href="{{ route('categories.index') }}" class="btn btn-light btn-outline-dark b-r-xs">Hủy</a>
                 </div>
             </div>
             {!! Form::close() !!}
