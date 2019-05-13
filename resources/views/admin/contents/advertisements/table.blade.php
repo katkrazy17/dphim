@@ -29,8 +29,8 @@
                                             <a class='btn btn-success btn-xs b-r-xs' href="{!! route('advertisements.edit',$advertisement->id) !!}"><i class="far fa-edit"></i> Edit</a>
                                             <a href='#Delete-{{$advertisement->id}}' data-toggle="modal" class="btn btn-danger btn-xs b-r-xs"><i class="far fa-trash-alt"></i> Delete</a>
                                         </td>
-        
-                                    </tr>     
+
+                                    </tr>
                                 @endforeach
                             </tbody>
                         </table>

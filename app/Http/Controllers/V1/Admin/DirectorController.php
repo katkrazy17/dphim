@@ -4,20 +4,21 @@ namespace App\Http\Controllers\V1\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\V1\Admin\Advertisement\StoreRequest;
-use App\Http\Requests\V1\Admin\Advertisement\UpdateRequest;
-use App\Repositories\Advertisement\AdvertisementRepositoryInterface;
+use App\Http\Requests\V1\Admin\Director\StoreRequest;
+use App\Http\Requests\V1\Admin\Director\UpdateRequest;
+use App\Repositories\Director\DirectorRepositoryInterface;
+use App\Models\Director;
 use Exception;
 
-class AdvertisementController extends Controller
+class DirectorController extends Controller
 {
-    protected $advertisementRepository;
+    protected $directorRepository;
 
     public function __construct(
-        AdvertisementRepositoryInterface $advertisementRepository
+        DirectorRepositoryInterface $directorRepository
     ) {
-        $this->advertisementRepository = $advertisementRepository;
-        $this->data['advertisements_all'] = $this->advertisementRepository->all();
+        $this->directorRepository = $directorRepository;
+        $this->data['directors_all'] = $this->directorRepository->all();
     }
     /**
      * Display a listing of the resource.
@@ -26,8 +27,11 @@ class AdvertisementController extends Controller
      */
     public function index()
     {
-        return view('admin.contents.advertisements.create-index', $this->data);
+        //
+        $this->data['directors_all'] = Director::paginate(5);
+        return view('admin.contents.directors.table', $this->data);
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -36,6 +40,8 @@ class AdvertisementController extends Controller
     public function create()
     {
         //
+        return view('admin.contents.directors.create-index', $this->data);
+
     }
 
     /**
@@ -44,16 +50,25 @@ class AdvertisementController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreRequest $request)
+    public function store(Request $request)
     {
+        //
         \DB::beginTransaction();
         try {
             $data = $request->only([
-                'distributor',
-                'link',
-                'position',
+                'first_name',
+                'last_name',
+                'job',
+                'gender',
+                'height',
+                'weight',
+                'blood_group',
+                'hobby',
+                'country',
+                'avatar',
+                'status',
             ]);
-            $this->filmRepository->create($data);
+            $this->directorRepository->create($data);
             \DB::commit();
             return redirect()->back()->with('status_s', 'Đã lưu dữ liệu thành công');
         } catch (\Throwable $th) {
@@ -81,10 +96,10 @@ class AdvertisementController extends Controller
      */
     public function edit($id)
     {
-        
+        //
         try {
-            $this->data['advertisements'] = $this->advertisementRepository->find($id);
-                return view('admin.contents.advertisements.edit', $this->data);
+            $this->data['directors'] = $this->directorRepository->find($id);
+                return view('admin.contents.directors.edit', $this->data);
             
         } catch (Exception $exception) {
             return view('admin.errors.404');
@@ -98,20 +113,27 @@ class AdvertisementController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        \DB::beginTransaction();
+        //
         try {
-            $this->advertisementRepository->find($id);
+            $this->directorRepository->find($id);
             $data = [
-                'distributor' => $request['distributor'],
-                'link' => $request['link'],
-                'position' => $request['position'],
-                'status' => $this->advertisementRepository->checkStatus($request['status']),
+                'first_name'  => $request['first_name'],
+                'last_name'   => $request['last_name'],
+                'job'         => $request['job'],
+                'gender'      => $request['gender'],
+                'height'      => $request['height'],
+                'weight'      => $request['weight'],
+                'blood_group' => $request['blood_group'],
+                'hobby'       => $request['hobby'],
+                'country'     => $request['country'],
+                'avatar'      => $request['job'],
+                'status'      => $this->directorRepository->checkStatus($request['status']),
             ];
-            $this->advertisementRepository->update($data, $id);
+            $this->directorRepository->update($data, $id);
             \DB::commit();
-            return redirect()->route('advertisements.index')->with('status_s', 'Đã cập nhật thành công !');
+            return redirect()->route('directors.index')->with('status_s', 'Đã cập nhật thành công !');
         } catch (Exception $exception) {
             \DB::rollback();
             return redirect()->back()->with('status_d', 'Không thể cập nhật ! Đã có lỗi xảy ra.');
@@ -126,10 +148,11 @@ class AdvertisementController extends Controller
      */
     public function destroy($id)
     {
+        //
         \DB::beginTransaction();
         try {
-            $advertisements = $this->advertisementRepository->find($id);
-            $this->advertisementRepository->destroy($advertisements->id);
+            $directors = $this->directorRepository->find($id);
+            $this->directorRepository->destroy($directors->id);
             \DB::commit();
             return redirect()->back()->with('status_p', 'Đã xóa thành công !');
         } catch (Exception $exception) {

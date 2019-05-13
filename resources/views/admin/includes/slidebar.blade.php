@@ -29,11 +29,56 @@
                 </ul>
             </li>
             <li>
-                <a href="#"><i class="fa fa-th-list"></i> <span class="nav-label">Quản lý quảng cáo</span><span
-                        class="fa arrow"></span></a>
+                <a href="#"><i class="fas fa-info"></i><span class="nav-label">Danh mục thông tin</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
+                    <li><a href="#">Danh mục diễn viên</a>
+                        <ul class="nav nav-second-level collapse">
+                            <li class="ml-4"><a href="{{ route('actors.create')}}">Tạo mới diễn viên</a></li>
+                            <li class="ml-4"><a href="{{ route('actors.index') }}">Danh sách diễn viên</a></li>
+                        </ul>
+                    </li>         
+                </ul>
+                <ul class="nav nav-second-level collapse">
+                    <li><a href="#">Danh mục đạo diễn</a>
+                        <ul class="nav nav-second-level collapse">
+                            <li class="ml-4"><a href="{{ route('directors.create') }}">Tạo mới đạo diễn</a></li>
+                            <li class="ml-4"><a href="{{ route('directors.index') }}">Danh sách đạo diễn</a></li>
+                        </ul>
+                    </li>         
+                </ul>
+                <ul class="nav nav-second-level collapse">
+                    <li><a href="#">Danh mục phim</a>
+                        <ul class="nav nav-second-level collapse">
+                            <li class="ml-4"><a href="#{{-- {{ route('films.create') }} --}}">Tạo mới phim</a></li>
+                            <li class="ml-4"><a href="{{-- {{ route('films.index') }} --}}">Danh sách phim</a></li>
+                        </ul>
+                    </li>         
+                </ul>
+                <ul class="nav nav-second-level collapse">
+                    <li><a href="#">Danh mục trailer</a>
+                        <ul class="nav nav-second-level collapse">
+                            <li class="ml-4"><a href="#">Tạo mới trailer</a></li>
+                            <li class="ml-4"><a href="#">Danh sách trailer</a></li>
+                        </ul>
+                    </li>         
+                </ul>
+            </li>
+            <li>
+                <a href="#"><i class="fas fa-cogs"></i> <span class="nav-label">Tính năng admin</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
+                    <li><a href="#">Trackers</a></li>
+                    <li><a href="#">Storage</a></li>
+                    <li><a href="#">Danh mục User</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#"><i class="fab fa-adversal"></i> <span class="nav-label">Quản lý quảng cáo</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse">
                     <li><a href="{{ route('advertisements.index') }}">Tạo quảng cáo</a></li>
                 </ul>
+            </li>
+            <li>
+                <a href="#"><i class="fas fa-cogs"></i> <span class="nav-label">Show human</span><span class="fa arrow"></span></a>
             </li>
         </ul>
     </div>

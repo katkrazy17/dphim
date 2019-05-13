@@ -42,4 +42,8 @@ class Director extends Model
     {
         return $this->hasMany('App\Models\Film');
     }
+    public function getFullNameAttribute()
+    {
+        return "{$this->first_name} {$this->last_name}";
+    }
 }

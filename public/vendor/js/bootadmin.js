@@ -152,8 +152,8 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\dphim\resources\assets\js\bootadmin.js */"./resources/assets/js/bootadmin.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\dphim\resources\assets\js\jquery-status.js */"./resources/assets/js/jquery-status.js");
+__webpack_require__(/*! C:\xampp\htdocs\film\dphim\resources\assets\js\bootadmin.js */"./resources/assets/js/bootadmin.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\film\dphim\resources\assets\js\jquery-status.js */"./resources/assets/js/jquery-status.js");
 
 
 /***/ })

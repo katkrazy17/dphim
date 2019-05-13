@@ -8,7 +8,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth
     Route::post('changePassword', 'Auth\AdminController@changePassword');
     //route category
     Route::get('categories/childs', ['uses' => 'CategoryController@childs', 'as' => 'categories.childs']);
+    Route::get('/', 'FrontEndController@get_home');
     Route::resource('categories', 'CategoryController')->except(['create', 'show']);
     Route::resource('tags', 'TagController')->except(['show']);
     Route::resource('advertisements','AdvertisementController')->except(['create','show']);
+    Route::resource('actors','ActorController')->except(['show']);
+    Route::resource('directors', 'DirectorController')->except(['show']);
 });

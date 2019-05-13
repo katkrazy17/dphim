@@ -42,4 +42,8 @@ class Actor extends Model
     {
         return $this->belongsToMany('App\Models\Film', 'film_actor', 'actor_id', 'film_id')->withTimestamps();
     }
+    public function getFullNameAttribute()
+    {
+        return "{$this->first_name} {$this->last_name}";
+    }
 }

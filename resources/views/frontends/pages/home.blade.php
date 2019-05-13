@@ -32,7 +32,7 @@
                           <p class="m-1">Subtitle: Vietnamese</p>
                         </div>
                         <div class="linked">
-                          <a href="{{url->}}" class="btn btn-warning text-white">WATCH</a>
+                          <a href="#" class="btn btn-warning text-white">WATCH</a>
                           <a href="#" class="btn btn-success">TRAILER</a>
                         </div>
                       </div>

@@ -32,6 +32,19 @@ class AppServiceProvider extends ServiceProvider
             \App\Repositories\Tag\TagRepositoryInterface::class,
             \App\Repositories\Tag\TagRepository::class
         );
+        $this->app->bind(
+            \App\Repositories\Actor\ActorRepositoryInterface::class,
+            \App\Repositories\Actor\ActorRepository::class  
+        );
+        $this->app->bind(
+            \App\Repositories\Director\DirectorRepositoryInterface::class,
+            \App\Repositories\Director\DirectorRepository::class  
+        );
+        $this->app->bind(
+            \App\Repositories\Film\FilmRepositoryInterface::class,
+            \App\Repositories\Film\FilmRepository::class  
+        );
+
     }
 
     /**
